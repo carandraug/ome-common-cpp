@@ -142,7 +142,10 @@ target_link_libraries(ome-common
                       ${LibDl_LIBRARIES})
 
 set_target_properties(ome-common PROPERTIES LINKER_LANGUAGE CXX)
-set_target_properties(ome-common PROPERTIES VERSION ${ome-common_VERSION})
+set_target_properties(ome-common
+  PROPERTIES
+    VERSION ${ome-common_VERSION}
+    SOVERSION ${release-version-major})
 
 add_library(OME::Common ALIAS ome-common)
 
