@@ -74,8 +74,10 @@ if(BUILD_TESTS)
       message(FATAL_ERROR "Build of GTest failed: ${gtest_cmake_result}")
     endif()
 
-    ## This adds the gtest and gtest_main targets...
-    add_subdirectory(${SOURCE_DIR} ${BINARY_DIR})
+    ## This adds the gtest and gtest_main targets (but not to ALL
+    ## because we don't want to install gtest) ...
+    add_subdirectory(${SOURCE_DIR} ${BINARY_DIR}
+      EXCLUDE_FROM_ALL)
     ## but the project expects GTest::GTest which is what would be
     ## imported if we were using find_package(GTest)
     add_library(GTest::GTest ALIAS gtest)
